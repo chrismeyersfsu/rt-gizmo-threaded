@@ -11,7 +11,7 @@ LD = gcc
 
 #Flags
 CFLAGS += $(DEBFLAGS) -g
-LDFLAGS = -lrt
+LDFLAGS = -lpthread -lrt
 
 #Install Variables
 INSTALL = install
@@ -29,7 +29,7 @@ PROG = gizmo
 all: $(PROG)
 
 $(PROG): $(OBJS)
-	$(LD) $(LDFLAGS) $(OBJS) -o $(PROG)
+	$(LD) $(OBJS) -o $(PROG) $(LDFLAGS)
 
 %.o: %.cpp
 	$(CC) $(CFLAGS) $(INCLUDE) -c $<
